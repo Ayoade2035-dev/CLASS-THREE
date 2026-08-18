@@ -1,6 +1,6 @@
-import studentModel from "../models/student.model.js";
+const studentModel = require("../models/student.model");
 
-export const createStudent = async (req, res) => {
+exports.createStudent = async (req, res) => {
   // const { first_name, last_name, email, student_id, password, active_status } = req.body;
   // const studentPayload = { first_name, last_name, email, student_id, password, active_status }
   // console.log(studentPayload);
@@ -25,7 +25,7 @@ export const createStudent = async (req, res) => {
 
 }
 
-export const getStudents = async (req, res) => {
+exports.getStudents = async (req, res) => {
   try {
     // console.log('i can get student');
     // res.send("i can get student");
@@ -39,7 +39,7 @@ export const getStudents = async (req, res) => {
   }
 }
 
-export const getStudent = async (req, res) => {
+exports.getStudent = async (req, res) => {
   console.log(req.params.id);
   try {
     const student = await studentModel.findById(req.params.id);
@@ -50,7 +50,7 @@ export const getStudent = async (req, res) => {
   }
 }
 
-export const updateStudent = async (req, res) => {
+exports.updateStudent = async (req, res) => {
   // console.log(req.body);
   try {
     const result = await studentModel.findOneAndUpdate(
@@ -67,7 +67,7 @@ export const updateStudent = async (req, res) => {
   }
 }
 
-export const deleteStudentByEmail = async (req, res) => {
+exports.deleteStudentByEmail = async (req, res) => {
   // console.log(req.body);
   try {
     const result = await studentModel.findOneAndDelete(
@@ -83,7 +83,7 @@ export const deleteStudentByEmail = async (req, res) => {
   }
 }
 
-export const deleteStudent = async (req, res) => {
+exports.deleteStudent = async (req, res) => {
   try {
     const result = await studentModel.findByIdAndDelete(req.params.id)
     res.json({ message: "record delete", result })

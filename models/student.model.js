@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const studentSchema = mongoose.Schema({
   first_name:{type:String, required: true, minLength:3, maxLength:20},
@@ -11,4 +11,4 @@ const studentSchema = mongoose.Schema({
 
 const studentModel = mongoose.model("students", studentSchema);
 
-export default studentModel
+module.exports = studentModel

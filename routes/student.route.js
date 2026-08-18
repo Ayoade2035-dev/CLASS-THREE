@@ -1,8 +1,7 @@
-import { getStudent, createStudent, getStudents, updateStudent, deleteStudent } from "../controllers/student.controller.js"
-import mongoose from "mongoose"
-import express from "express"
+const { getStudent, createStudent, getStudents, updateStudent, deleteStudent } = require("../controllers/student.controller")
+const mongoose = require("mongoose")
 
-const router = express.Router()
+const router = require("express").Router()
 
 // Middleware to validate MongoDB ObjectId
 const validateObjectId = (req, res, next) => {
@@ -18,4 +17,4 @@ router.post("/", createStudent)
 router.patch("/:id", updateStudent)
 router.delete("/:id", deleteStudent)
 
-export default router
+module.exports = router

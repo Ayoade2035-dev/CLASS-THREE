@@ -1,22 +1,18 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
-import Router from "./routes/student.route.js";
-
-dotenv.config();
-
+const express = require('express');
 const app = express();
+const cors = require('cors');
+require('dotenv').config()
+const mongoose = require('mongoose')
 const port = process.env.PORT;
 const uri = process.env.MONGODB_URI;
+const Router = require("./routes/student.route")
 
 
 app.set("view engine", "ejs")
-import studentModel from './models/student.model.js';
-
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended:true}))           
+app.use(express.urlencoded({extended:true}))
+const studentModel = require('./models/student.model');           
 
 app.use("/student", Router)
 const dns = require('dns');
