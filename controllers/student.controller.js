@@ -1,17 +1,20 @@
 const studentModel = require("../models/student.model");
+const bcrypt = require("bcryptjs")
 
 exports.createStudent = async (req, res) => {
   // const { first_name, last_name, email, student_id, password, active_status } = req.body;
   // const studentPayload = { first_name, last_name, email, student_id, password, active_status }
   // console.log(studentPayload);
   try {
-
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(req.body.password, salt)
+    req.body.password = hashedPassword
     const newStudent = new studentModel({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
       student_id: req.body.student_id,
-      password: req.body.password,
+      password: hashedPassword,
     })
     const savedStudent = await newStudent.save();
     console.log(savedStudent);
