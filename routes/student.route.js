@@ -1,4 +1,4 @@
-const { getStudent, createStudent, getStudents, updateStudent, deleteStudent } = require("../controllers/student.controller")
+const { getStudent, createStudent, getStudents, updateStudent, deleteStudent, testing } = require("../controllers/student.controller")
 const mongoose = require("mongoose")
 
 const router = require("express").Router()
@@ -11,10 +11,11 @@ const validateObjectId = (req, res, next) => {
   next()
 }
 
+router.post("/poststudent", createStudent)
 router.get("/", getStudents)
 router.get("/:id", validateObjectId, getStudent)
-router.post("/", createStudent)
 router.patch("/:id", updateStudent)
 router.delete("/:id", deleteStudent)
+router.post("/testing", testing) // Add the testing route
 
 module.exports = router

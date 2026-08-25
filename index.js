@@ -42,11 +42,6 @@ app.get('/', (req, res) => {
 
 // })
 
-app.post("/testing", async(req, res)=>{
-  console.log(req.body);
-  res.json(req.body)
-  
-})
 
 app.get("/signup", (req, res)=>{
   res.render("signup")

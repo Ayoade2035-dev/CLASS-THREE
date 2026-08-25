@@ -95,3 +95,7 @@ exports.deleteStudent = async (req, res) => {
     res.json({ message: "some thing went wrong" })
   }
 }
+exports.testing = async(req, res)=>{
+  console.log(req.body);
+  res.json(req.body) 
+}
